@@ -143,8 +143,8 @@ class PyTest(TestCommand):
         errno = pytest.main(self.pytest_args)
         sys.exit(errno)
 
-
-use_openmp = not sys.platform.startswith('darwin') and not sys.platform.startswith('win')
+# Use openmp on macos with the assumption that we will be compiling with gcc
+use_openmp = not sys.platform.startswith('win')
 
 setup(
     name='lightfm',
